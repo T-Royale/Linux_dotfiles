@@ -319,7 +319,8 @@
 		"Exercism",
 		"Pruebas",
 		"VSCodium",
-		"LowLevel"
+		"LowLevel",
+		"2ºSMR"
 	],
 	"errorLens.delayMode": "debounce",
 	"editor.codeLensFontFamily": "JetBrains Mono Nerd Font",
