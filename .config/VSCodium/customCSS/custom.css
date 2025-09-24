@@ -1,0 +1,33 @@
+/* Menú Ctrl+P (Quick Input) */
+.quick-input-widget {
+  border: 2px solid #007acc !important; /* azul de VS Code */
+  border-radius: 6px !important;        /* esquinas redondeadas opcional */
+  transform: scale(1.1);                /* lo hace más grande */
+  transform-origin: top center;         /* que crezca desde arriba */
+  font-family: "JetBrains Mono Nerd Font", monospace !important;
+  font-size: 16px !important;
+}
+
+/* =========== Fuente general para listas/árboles y textos UI =========== */
+.monaco-workbench .monaco-list,
+.monaco-workbench .monaco-list *:not(.codicon):not(.codicon-label):not(.octicon),
+.explorer-viewlet .monaco-list .monaco-list-row .monaco-icon-label,
+.explorer-viewlet .monaco-list .monaco-list-row .monaco-icon-label .label-name,
+.part.sidebar .pane-header .title,
+.part.sidebar .title h2,
+.part.sidebar .pane-body,
+.tabs-container .tab .monaco-icon-label .label-name,
+.tabs-container .tab .monaco-icon-label,
+.quick-input-widget .monaco-list-row .monaco-highlighted-label,
+.quick-input-widget .monaco-list-row .monaco-icon-label,
+.quick-input-widget .monaco-list-row {
+  font-family: "JetBrainsMono Nerd Font", monospace !important;
+  font-size: 14px !important;
+}
+
+/* Mantener iconos funcionando */
+.codicon,
+.monaco-icon-label::before {
+  font-family: "codicon" !important;
+}
+
