@@ -1,0 +1,86 @@
+console_title_template = '  {{ .Folder }}'
+version = 3
+final_space = true
+
+# Paleta de colores
+[palette]
+    light-gray = "#6c6c6c"
+    gray-bg = "#3b3b3b"
+    orange = "#ff8800"
+    green = "#72B874"
+
+[[blocks]] # Icono ╭─ para conectar el prompt con la linea de comandos
+    type = 'prompt'
+    alignment = 'left'
+    newline = true
+
+    [[blocks.segments]]
+        type = 'text'
+        style = 'plain'
+        foreground_templates = [
+            "{{if gt .Code 0}}red{{end}}",
+            "{{if eq .Code 0}}magenta{{end}}",
+        ]
+        background = "transparent"
+        template = "╭─"
+
+[[blocks]] # Bloque del prompt
+    type = 'prompt'
+    alignment = 'left'
+
+    [[blocks.segments]]
+        type = "path"
+        style = "diamond"
+        background = "p:gray-bg"
+        foreground = "blue"
+        template = '󰣇 {{ .UserName }} '
+        leading_diamond = ""
+
+    [[blocks.segments]]
+        type = "path"
+        style = "diamond"
+        background = "p:gray-bg"
+        foreground = "green"
+        template = ' {{ .Path }}'
+
+        trailing_diamond = ""
+
+        [blocks.segments.properties]
+            style = "mixed"
+
+    [[blocks.segments]]
+        type = 'git'
+        style = 'diamond'
+        trailing_diamond = ""
+        foreground = "p:orange"
+        background = 'p:gray-bg'
+            template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+        [blocks.segments.properties]
+            branch_icon = ' '
+            commit_icon = '@'
+            fetch_status = true
+
+# Línea de comandos
+[[blocks]]
+    type = 'prompt'
+    alignment = 'left'
+    newline = true
+
+    [[blocks.segments]]
+        type = 'text'
+        style = 'plain'
+        foreground_templates = [
+            "{{if gt .Code 0}}red{{end}}",
+            "{{if eq .Code 0}}magenta{{end}}",
+        ]
+        background = 'transparent'
+        template = '╰─ '
+
+# Transient prompt
+[transient_prompt]
+    foreground_templates = [
+        "{{if gt .Code 0}}red{{end}}",
+        "{{if eq .Code 0}}magenta{{end}}",
+    ]
+    background = 'transparent'
+    template = ' '

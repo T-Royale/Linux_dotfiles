@@ -379,7 +379,7 @@
 	"workbench.productIconTheme": "material-product-icons",
 	"material-icon-theme.activeIconPack": "qwik",
 	"window.menuBarVisibility": "toggle",
-	"workbench.colorTheme": "Tokyo Night",
+	"workbench.colorTheme": "Catppuccin Mocha",
 	"explorer.decorations.badges": false,
 	"editor.tokenColorCustomizations": {
 		"textMateRules": [

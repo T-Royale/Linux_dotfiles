@@ -1,49 +1,8 @@
-# Zinit initialization
-source ~/.zsh/zinit/zinit.zsh
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="afowler"
 
-# ZSH_PLUGINS
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
-
-# Load completions
-autoload -Uz compinit && compinit
-
-# KeyBindings
-bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-
-# History
-HISTSIZE=10000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-
-# Completion settings
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-# Shell integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init zsh)"
-
-# Init oh-my-pos# Init oh-my-poshh
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
-
-export VISUAL=nvim
-export EDITOR=nvim
+export VISUAL=vim
+export EDITOR=vim
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -53,9 +12,25 @@ export hello=/usr/local/bin/t_royale
 
 ENABLE_CORRECTION="true"
 
+plugins=(
+	git
+	# zsh-autosuggestions
+	zsh-syntax-highlighting
+	zsh-history-substring-search
+	colorize
+)
+
 cls(){
 	clear
 	/usr/local/bin/t_royale
+}
+
+update(){
+	sudo pacman -Syu --noconfirm
+	yay -Syu --noconfirm
+	sudo snap refresh
+	flatpak update
+	paru -Syu --noconfirm
 }
 
 forceLoad(){
@@ -70,11 +45,21 @@ noClose(){
 	nohup "$1" > /dev/null 2>&1 & disown
 }
 
+#if [ -z "$TMUX" ]; then
+#	if [[ $TERM_PROGRAM == "vscode" ]]; then
+#		tmux new-session "/usr/local/bin/t_royale; zsh"
+#	else
+#		tmux new-session "neofetch --source ~/.config/neofetch/logo.txt; zsh"
+#	fi
+#fi
+
 if [[ $TERM_PROGRAM == "vscode" || $TERM_PROGRAM == "tmux" ]]; then
 	/usr/local/bin/t_royale
 else
 	neofetch --source ~/.config/neofetch/logo.txt
 fi
+
+source $ZSH/oh-my-zsh.sh
 
 exercism () {
     local out
@@ -89,10 +74,61 @@ bash_test() {
     BATS_RUN_SKIPPED=true command bats *.bats
 }
 
+# Pronmpt configuration
+
+function dir_icon {
+	if [[ "$PWD" == "$HOME" ]]; then
+		echo "%B%F{cyan}%f%b"
+	else
+		echo "%B%F{cyan}%f%b"
+	fi
+}
+
+function parse_git_branch {
+	local branch
+	branch=$(git symbolic-ref --short HEAD 2> /dev/null)
+	if [ -n "$branch" ]; then
+		echo " [$branch]"
+	fi
+}
+
+# Función para mostrar solo las dos últimas carpetas de la ruta
+short_pwd() {
+  local dir=$PWD
+  local blue="%F{cyan}"
+  local red="%F{red}"
+  local reset="%f"
+
+  if [[ $dir == $HOME* ]]; then
+    # relativo al HOME
+    local relative="${dir#$HOME/}"
+    local parts=("${(@s:/:)relative}")
+
+    if (( ${#parts[@]} >= 2 )); then
+      print "${blue}/..${reset}${red}/${parts[-2]}/${parts[-1]}${reset}"
+    elif (( ${#parts[@]} == 1 )); then
+      print "${blue}/${reset}${red}${parts[-1]}${reset}"
+    else
+      print "${blue}${reset}"
+    fi
+  else
+    # fuera de HOME → solo dos últimas carpetas con ..
+    local parts=("${(@s:/:)dir}")
+    if (( ${#parts[@]} >= 2 )); then
+      print "${blue}..${reset}${red}/${parts[-2]}/${parts[-1]}${reset}"
+    else
+      print "${red}$dir${reset}"
+    fi
+  fi
+}
+
+PROMPT=$'%{\e[?7l%}%F{cyan}󰣇 %f %F{magenta}%n%f $(dir_icon) %F{red}%~%f%${vcs_info_msg_0_} %F{yellow}$(parse_git_branch)%f
+%(?.%F{green}%f.%F{red}%f) '
+
+
+# Evals
+
 # Aliases
-alias cd='z'
-alias zi='cd "$(zoxide query -i)"'
-alias vim='nvim'
 alias neofetch='neofetch --ascii "$(cat ~/.config/neofetch/logo.txt)"'
 alias ls='eza -s=modified --git'
 alias tree='eza --tree --level=5'
@@ -114,9 +150,9 @@ alias gparted='pkexec env DISPLAY=$DISPLAY WAYLAND_DISPLAY=$WAYLAND_DISPLAY XDG_
 alias weather='curl wttr.in/valencia'
 alias rm='/usr/local/bin/moveToTrash.sh'
 alias cal='cal -m'
-alias la='ls -a'
 # PATH
 export PATH="$HOME/.local/share/gem/ruby/3.3.0/bin:$PATH"
 export PATH="/usr/bin/teoscripts:$PATH"
 export PATH="$HOME/teo/teoscripts:$PATH"
 export PATH="$HOME/bin:$PATH"
+
