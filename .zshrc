@@ -15,6 +15,12 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
+# Arrow keys
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+#bindkey "^[[1;5A" up-line-or-history
+#bindkey "^[[1;5B" down-line-or-history
+
 # History
 HISTSIZE=10000
 HISTFILE=~/.zsh_history
