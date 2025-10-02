@@ -363,5 +363,9 @@
     {
         "key": "alt+[Semicolon]",
         "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+        "key": "alt+r",
+        "command": "workbench.files.action.refreshFilesExplorer"
     }
 ]

@@ -320,7 +320,8 @@
 		"Pruebas",
 		"VSCodium",
 		"LowLevel",
-		"2ºSMR"
+		"2ºSMR",
+		"FreeCodeCamp"
 	],
 	"errorLens.delayMode": "debounce",
 	"editor.codeLensFontFamily": "JetBrains Mono Nerd Font",
@@ -411,5 +412,5 @@
 	"discord.removeLowerDetails": true,
 	"discord.removeDetails": true,
 	"workbench.panel.defaultLocation": "right",
-	"workbench.editor.empty.hint": "hidden"
+	"workbench.editor.empty.hint": "hidden",
 }
