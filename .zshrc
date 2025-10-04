@@ -100,6 +100,7 @@ bash_test() {
 }
 
 # Aliases
+alias lgit='lazygit'
 alias cd='z'
 alias zi='cd "$(zoxide query -i)"'
 alias vim='nvim'
