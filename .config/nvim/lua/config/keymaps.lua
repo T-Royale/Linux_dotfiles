@@ -11,4 +11,5 @@ vim.keymap.set("n", "<leader>gs", function()
 		require("telescope.builtin").grep_string({ search = input })
 	end
 end, { desc = "Telescope grep_string con input" })
-
+-- <leader> w for autosave
+vim.keymap.set("n", "<leader>w", ":ASToggle<CR>", { desc = "Alternar AutoSave" })
