@@ -15,3 +15,11 @@ require("lsp")
 
 -- Números
 vim.opt.relativenumber = true
+
+-- Portapapeles
+vim.opt.clipboard:append("unnamedplus")
+
+-- tab=4
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
