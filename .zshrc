@@ -21,6 +21,14 @@ bindkey "^[[1;5D" backward-word
 #bindkey "^[[1;5A" up-line-or-history
 #bindkey "^[[1;5B" down-line-or-history
 
+# --- Historial por prefijo con ↑ ↓ ---
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+bindkey '^[[A' up-line-or-beginning-search   # ↑
+bindkey '^[[B' down-line-or-beginning-search # ↓
+
 # History
 HISTSIZE=10000
 HISTFILE=~/.zsh_history
@@ -63,28 +71,42 @@ export hello=/usr/local/bin/t_royale
 
 ENABLE_CORRECTION="true"
 
-cls(){
-	clear
-	/usr/local/bin/t_royale
-}
-
 forceLoad(){
-	hyprctl dispatch focuswindow $1
+    hyprctl dispatch focuswindow $1
 }
 
 noClose(){
-	if [ $# -ne 1 ]; then
-		echo -e "SYNTAX: noClose [program]\nERROR: \"noClose\" needs an argument \nEXAMPLE: noClose waybar"
-		exit 1	
-	fi
-	nohup "$1" > /dev/null 2>&1 & disown
+    if [ $# -ne 1 ]; then
+        echo -e "SYNTAX: noClose [program]\nERROR: \"noClose\" needs an argument \nEXAMPLE: noClose waybar"
+        exit 1	
+    fi
+    nohup "$1" > /dev/null 2>&1 & disown
 }
 
-if [[ $TERM_PROGRAM == "vscode" || $TERM_PROGRAM == "tmux" ]]; then
-	/usr/local/bin/t_royale
-else
-	neofetch --source ~/.config/neofetch/logo.txt
+columns=$(tput cols)
+lines=$(tput lines)
+MAX_LINES_NF=80
+MAX_COLS_NF=35
+
+if [[ $TERM_PROGRAM != "tmux" ]]; then
+    tmux
 fi
+
+
+if [ "$columns" -ge "$MAX_LINES_NF" ] && [ "$lines" -ge "$MAX_COLS_NF" ]; then
+    neofetch --ascii ~/.config/neofetch/logo.txt
+else
+    /usr/local/bin/t_royale
+fi
+
+cls() {
+    clear
+    if [ "$columns" -ge "$MAX_LINES_NF" ] && [ "$lines" -ge "$MAX_COLS_NF" ]; then
+        neofetch --ascii ~/.config/neofetch/logo.txt
+    else
+        /usr/local/bin/t_royale
+    fi
+}
 
 exercism () {
     local out
@@ -131,3 +153,8 @@ export PATH="$HOME/.local/share/gem/ruby/3.3.0/bin:$PATH"
 export PATH="/usr/bin/teoscripts:$PATH"
 export PATH="$HOME/teo/teoscripts:$PATH"
 export PATH="$HOME/bin:$PATH"
+
+# Load local and secret variables
+if [ -f ~/.zshrc.local ]; then
+    source ~/.zshrc.local
+fi
