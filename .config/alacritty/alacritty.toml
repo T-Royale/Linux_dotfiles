@@ -1,3 +1,13 @@
+[[keyboard.bindings]]
+key = "Left"
+mods = "Alt"
+chars = "\u001b[1;5D"
+
+[[keyboard.bindings]]
+key = "Right"
+mods = "Alt"
+chars = "\u001b[1;5C"
+
 [colors.bright]
 black = "#44475a"
 blue = "#8be9fd"
@@ -26,9 +36,11 @@ foreground = "#e2e8f0"
 background = "#35383d"
 text = "#1a1a2e"
 
+[cursor]
+unfocused_hollow = false
+
 [cursor.style]
 shape = "Block"
-
 
 [font]
 size = 13.5
