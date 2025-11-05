@@ -10,9 +10,6 @@ require('config')
 require('config.lazy')
 require('config.keymaps')
 
--- Incluir el lsp
-require("lsp")
-
 -- Números
 vim.opt.relativenumber = true
 
