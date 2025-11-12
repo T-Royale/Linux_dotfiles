@@ -93,15 +93,9 @@
         "persistent-workspaces": {
             "*":[1,2,3,4,5]
         },
-        "format": "{icon}",
-        "format-icons": {
-            "active": " ",
-            "empty": " ",
-            "default": " ",
-            "urgent": " ",
-            "special": "󰠱 "
-        }
-        // "format-window-separator": "|",
+        "format": "{name}",
+        "disable-scroll": true,
+        "all-outputs": false
     },
     "hyprland/window": {
         "icon": true,
