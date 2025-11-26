@@ -18,8 +18,6 @@ bindkey '^n' history-search-forward
 # Arrow keys
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
-#bindkey "^[[1;5A" up-line-or-history
-#bindkey "^[[1;5B" down-line-or-history
 
 # --- Historial por prefijo con ↑ ↓ ---
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
@@ -62,19 +60,14 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 export VISUAL=nvim
 export EDITOR=nvim
-
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export ZSH_TMUX_FIX=1
-
 export hello=/usr/local/bin/t_royale
 
 ENABLE_CORRECTION="true"
 
-forceLoad(){
-    hyprctl dispatch focuswindow $1
-}
-
+# Run program on background
 noClose(){
     if [ $# -ne 1 ]; then
         echo -e "SYNTAX: noClose [program]\nERROR: \"noClose\" needs an argument \nEXAMPLE: noClose waybar"
@@ -83,6 +76,7 @@ noClose(){
     nohup "$1" > /dev/null 2>&1 & disown
 }
 
+# Show neofetch if terminal is big enough
 columns=$(tput cols)
 lines=$(tput lines)
 MAX_LINES_NF=80
@@ -122,6 +116,9 @@ bash_test() {
 }
 
 # Aliases
+alias mount_ntfs='sudo mount -t exfat -o uid=$(id -u),gid=$(id -g),umask=022'
+alias df='df -ah'
+alias fm='yazi'
 alias lgit='lazygit'
 alias cd='z'
 alias zi='cd "$(zoxide query -i)"'
@@ -135,7 +132,6 @@ alias trefresh='source ~/.zshrc'
 alias clock='termclock --time-format="%H:%M" --no-sysinfo --no-logo --no-date -nm'
 alias video='vlc'
 alias calc='rofi -show calc -modi calc -no-show-match -no-sort'
-alias stouch='install -m 774 /dev/null'
 alias q='exit 0'
 alias code='codium'
 alias cat='ccat'
@@ -148,6 +144,7 @@ alias weather='curl wttr.in/valencia'
 alias rm='/usr/local/bin/moveToTrash.sh'
 alias cal='cal -m'
 alias la='ls -a'
+alias open='xdg-open'
 # PATH
 export PATH="$HOME/.local/share/gem/ruby/3.3.0/bin:$PATH"
 export PATH="/usr/bin/teoscripts:$PATH"

@@ -53,7 +53,7 @@
 
     "wireplumber": {
         "format": "{icon}{volume}%",
-        "format-muted": "󰝟 ",
+        "format-muted": "󰝟 OFF",
         "on-click": "/usr/local/bin/sound/toggleMute",
         "format-icons": [" ", " ", " ", "  ", "  "]
     },
@@ -91,7 +91,7 @@
     "hyprland/workspaces": {
         "show-special": true,
         "persistent-workspaces": {
-            "*":[1,2,3,4,5]
+            "*":[1,2,3]
         },
         "format": "{name}",
         "disable-scroll": true,
