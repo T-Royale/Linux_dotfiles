@@ -82,8 +82,12 @@ lines=$(tput lines)
 MAX_LINES_NF=80
 MAX_COLS_NF=35
 
+# Run tmux's first non-attached session on terminal startup
 if [[ $TERM_PROGRAM != "tmux" ]]; then
-    tmux
+    target=$(tmux list-sessions -F "#{session_name} #{session_attached}" 2>/dev/null \
+             | awk '$2==0 {print $1; exit}')
+
+    tmux attach -t "${target:-default}" 2>/dev/null || tmux 
 fi
 
 
@@ -144,7 +148,7 @@ alias video='vlc'
 alias calc='rofi -show calc -modi calc -no-show-match -no-sort'
 alias q='exit 0'
 alias code='codium'
-alias cat='ccat'
+alias cat='bat --theme="Catppuccin Macchiato"'
 alias image='feh'
 alias grep='grep -i'
 alias date='date +'%d/%m/%Y''
