@@ -115,6 +115,16 @@ bash_test() {
     BATS_RUN_SKIPPED=true command bats *.bats
 }
 
+# Start yazi from CLI and go to that directory after closing yazi 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # Aliases
 alias mount_ntfs='sudo mount -t exfat -o uid=$(id -u),gid=$(id -g),umask=022'
 alias df='df -ah'
