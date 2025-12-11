@@ -54,6 +54,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
+eval "$(thefuck --alias)"
 
 # Init oh-my-pos# Init oh-my-poshh
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
@@ -83,6 +84,11 @@ MAX_LINES_NF=80
 MAX_COLS_NF=35
 
 # Run tmux's first non-attached session on terminal startup
+
+if [[ $TERM_PROGRAM == "vscode" ]]; then
+    tmux
+fi
+
 if [[ $TERM_PROGRAM != "tmux" ]]; then
     target=$(tmux list-sessions -F "#{session_name} #{session_attached}" 2>/dev/null \
              | awk '$2==0 {print $1; exit}')
@@ -138,7 +144,7 @@ alias cd='z'
 alias zi='cd "$(zoxide query -i)"'
 alias vim='nvim'
 alias neofetch='neofetch --ascii "$(cat ~/.config/neofetch/logo.txt)"'
-alias ls='eza -s=modified --git'
+alias ls='eza -s=modified --git --icons'
 alias tree='eza --tree --level=5'
 alias tconfig='vim ~/.zshrc'
 alias hconfig='vim ~/.config/hypr/hyprland.conf'
