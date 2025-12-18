@@ -14,8 +14,9 @@
 	"editor.overtypeCursorStyle": "line",
 	"editor.cursorBlinking": "expand",
 	"editor.multiCursorMergeOverlapping": false,
+	"editor.cursorSmoothCaretAnimation": "on",
 	"explorer.confirmDragAndDrop": false,
-	"git.autofetch": false,
+	"git.autofetch": true,
 	"extensions.experimental.affinity": {
 		"asvetliakov.vscode-neovim": 1
 	},
@@ -29,6 +30,8 @@
 	"editor.guides.bracketPairsHorizontal": true,
 	"editor.minimap.enabled": false,
 	"git.openRepositoryInParentFolders": "never",
+	"vim.easymotion": true,
+	"vim.useSystemClipboard": true,
 	"vim.cursorStylePerMode.insert": "line",
 	"vim.cursorStylePerMode.normal": "block",
 	"vim.cursorStylePerMode.replace": "block-outline",
@@ -37,8 +40,6 @@
 	"vim.cursorStylePerMode.visualline": "line",
 	"vim.leader": "<Space>",
 	"vim.normalModeKeyBindingsNonRecursive": [
-		// NAVIGATION
-		// switch b/w buffers
 		{
 			"before": [
 				"<S-Tab>"
