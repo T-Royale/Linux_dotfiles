@@ -56,9 +56,6 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 eval "$(thefuck --alias)"
 
-# Init oh-my-pos# Init oh-my-poshh
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
-
 export VISUAL=nvim
 export EDITOR=nvim
 export LANG=en_US.UTF-8
@@ -76,32 +73,6 @@ noClose(){
     fi
     nohup "$1" > /dev/null 2>&1 & disown
 }
-
-# Show neofetch if terminal is big enough
-columns=$(tput cols)
-lines=$(tput lines)
-MAX_LINES_NF=80
-MAX_COLS_NF=35
-
-# Run tmux's first non-attached session on terminal startup
-
-if [[ $TERM_PROGRAM == "vscode" ]]; then
-    tmux
-fi
-
-if [[ $TERM_PROGRAM != "tmux" ]]; then
-    target=$(tmux list-sessions -F "#{session_name} #{session_attached}" 2>/dev/null \
-             | awk '$2==0 {print $1; exit}')
-
-    tmux attach -t "${target:-default}" 2>/dev/null || tmux 
-fi
-
-
-if [ "$columns" -ge "$MAX_LINES_NF" ] && [ "$lines" -ge "$MAX_COLS_NF" ]; then
-    neofetch --ascii ~/.config/neofetch/logo.txt
-else
-    /usr/local/bin/t_royale
-fi
 
 cls() {
     clear
@@ -134,6 +105,9 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# Init oh-my-pos# Init oh-my-poshh
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 # Aliases
 alias mount_ntfs='sudo mount -t exfat -o uid=$(id -u),gid=$(id -g),umask=022'
@@ -175,3 +149,23 @@ export PATH="$HOME/bin:$PATH"
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
+
+# Init tmux and show neofetch if terminal is big enough
+
+if command -v tmux >/dev/null && [[ -z "$TMUX" ]]; then
+    tmux attach -t default 2>/dev/null || tmux new -s default
+fi
+
+if [[ -o interactive ]]; then
+    columns=$(tput cols)
+    lines=$(tput lines)
+    MAX_LINES_NF=80
+    MAX_COLS_NF=35
+
+    if [ "$columns" -ge "$MAX_LINES_NF" ] && [ "$lines" -ge "$MAX_COLS_NF" ]; then
+        neofetch --ascii ~/.config/neofetch/logo.txt
+    else
+        /usr/local/bin/t_royale
+    fi
+fi
+
