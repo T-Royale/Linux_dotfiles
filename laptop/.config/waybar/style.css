@@ -1,0 +1,129 @@
+/*=== Catppuccin macciatto color pallette ===*/
+@define-color rosewater #f4dbd6;
+@define-color flamingo #f0c6c6;
+@define-color pink #f5bde6;
+@define-color mauve #c6a0f6;
+@define-color red #ed8796;
+@define-color maroon #ee99a0;
+@define-color peach #f5a97f;
+@define-color yellow #eed49f;
+@define-color green #a6da95;
+@define-color teal #8bd5ca;
+@define-color sky #91d7e3;
+@define-color sapphire #7dc4e4;
+@define-color blue #8aadf4;
+@define-color lavender #b7bdf8;
+@define-color text #cad3f5;
+@define-color subtext1 #b8c0e0;
+@define-color subtext0 #a5adcb;
+@define-color overlay2 #939ab7;
+@define-color overlay1 #8087a2;
+@define-color overlay0 #6e738d;
+@define-color surface2 #5b6078;
+@define-color surface1 #494d64;
+@define-color surface0 #363a4f;
+@define-color base #24273a;
+@define-color mantle #1e2030;
+@define-color crust #181926;
+
+
+window#waybar {
+    font-family: "JetBrains Mono NerdFont";
+    background: none;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+}
+.modules-left {
+    padding: 4px 12px;
+}
+.modules-center {
+    opacity: 1;
+    background: @base;
+    border-radius: 0.5rem;
+    padding: 4px 12px;
+    color: @text;
+    font-size: 1.25rem;
+}
+
+.modules-right {
+    background: @base;
+    border-radius: 0.75rem;
+    padding: 4px 12px;
+    border: 2.5px solid rgba(255, 255, 255, 0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    opacity: 1;
+}
+
+.modules-right > * {
+   color: @text;
+   font-size: 1rem;
+}
+
+.modules-right > :first-child {
+    margin-left: 8px;
+}
+
+.modules-right > :last-child {
+    margin-right: 8px;
+}
+
+#workspaces {
+    padding: 0 6px;
+}
+
+#workspaces button {
+    font-size: 0;
+    background: @overlay1;
+    border: none;
+    margin: 0 4px;
+    min-width: 8px;
+    min-height: 8px;
+    border-radius: 50%;
+    color: @text;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    transition: all 0.30s ease-in-out;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+    min-width: 35px;  
+    border-radius: 20px;
+    background: @sapphire;
+    color: @base;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+
+/* Urgente */
+#workspaces button.urgent {
+    background: @red;
+    color: @base;
+}
+
+/* Hover */
+#workspaces button:hover {
+    background: @lavender;
+    transition: all 0.25s ease-in-out;
+}
+
+#battery {
+    color: @green;
+}
+
+#memory {
+    color: @maroon;
+}
+
+#disk {
+    color: @teal;
+}
+
+#cpu {
+    color: @yellow;
+}
+
+#temperature {
+    color: @rosewater;
+}
+#wireplumber {
+    color: @flamingo;
+}
