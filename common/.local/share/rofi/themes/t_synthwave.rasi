@@ -1,0 +1,96 @@
+* {
+	base00: #FFFFFF;
+	base03: #546E7A;
+	base04: #B2CCD6;
+	base0D: #134fd1;
+	base0E: #9a0bd3;
+	base0B: #C3E88D;
+	base0F: #FF5370;
+	bg1   : #121f33;
+
+	spacing: 1;
+	background-color: transparent;
+
+	font: "JetBrainsMono Nerd Font 24";
+	color: @base00;
+}
+
+window {
+	transparency: "real";
+  /*fullscreen: true;*/
+  background-color: @bg1;
+}
+
+mainbox {
+  children: [inputbar, message, listview];
+  spacing: 30px;
+  padding: 30px 0;
+  border: 5px;
+  border-color: @base0E;
+}
+
+inputbar {
+  padding: 0 30px;
+  children: [prompt, textbox-prompt-colon, entry, case-indicator];
+  border-color: @base0E;
+}
+
+prompt {
+  color: @base00;
+}
+
+textbox-prompt-colon {
+  expand: false;
+  str: ":";
+  margin: 0 1ch 0 0;
+  color: @base00;
+}
+
+entry {
+  color: @base00;
+}
+
+case-indicator {
+  color: @base00;
+}
+
+button, textbox {
+  background-color: @base03;
+  color: @base00;
+  padding: 5px;
+}
+
+button selected {
+  background-color: @base0D;
+}
+
+element {
+  visible: false;
+  padding: 0px;
+  highlight: bold underline;
+}
+
+element-icon {
+    size: 1.5ch;
+    margin: 0.5ch;
+}
+
+element selected {
+  background-color: @base0D;
+}
+
+element alternate {
+  /*background-color: @base03;*/
+}
+
+element normal normal, element selected normal, element alternate normal {
+  color: @base00;
+}
+
+element normal urgent, element selected urgent, element alternate urgent {
+  color: @base0F;
+}
+
+element normal active, element selected active, element alternate active {
+  color: @base0B;
+}
