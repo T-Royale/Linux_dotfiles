@@ -192,4 +192,6 @@ configuration {
 
 //@theme "/usr/share/rofi/themes/t_custom_1.rasi"
 
-@theme "/usr/share/rofi/themes/t_synthwave"
+//@theme "/usr/share/rofi/themes/t_synthwave"
+
+@theme "/home/teo/.local/share/rofi/themes/t_synthwave.rasi"
