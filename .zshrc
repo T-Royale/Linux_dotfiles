@@ -70,7 +70,6 @@ export EDITOR=nvim
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export ZSH_TMUX_FIX=1
-export hello=/usr/local/bin/t_royale
 
 ENABLE_CORRECTION="true"
 
@@ -93,7 +92,7 @@ cls() {
     if [ "$columns" -ge "$MAX_LINES_NF" ] && [ "$lines" -ge "$MAX_COLS_NF" ]; then
         neofetch --ascii ~/.config/neofetch/logo.txt
     else
-        /usr/local/bin/t_royale
+        cowsay -f tux hola
     fi
 }
 
@@ -190,12 +189,12 @@ NEOFETCH_CACHE="$HOME/.cache/neofetch.ascii"
 if [[ -o interactive ]]; then
   if (( COLUMNS >= 80 && LINES >= 35 )); then
     if [[ -f $NEOFETCH_CACHE ]]; then
-      /usr/bin/cat "$NEOFETCH_CACHE"
+        /usr/bin/cat "$NEOFETCH_CACHE"
     else
-      neofetch --ascii ~/.config/neofetch/logo.txt | tee "$NEOFETCH_CACHE"
+        neofetch --ascii ~/.config/neofetch/logo.txt | tee "$NEOFETCH_CACHE"
     fi
   else
-    /usr/local/bin/t_royale
+        cowsay -f tux hola
   fi
 fi
 
