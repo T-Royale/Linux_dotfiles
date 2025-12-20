@@ -2,13 +2,21 @@
 source ~/.zsh/zinit/zinit.zsh
 
 # ZSH_PLUGINS
+zinit ice wait lucid
 zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
+
+zinit ice wait lucid
 zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait lucid
+zinit light zsh-users/zsh-completions
+
+zinit ice wait'1' lucid
 zinit light Aloxaf/fzf-tab
 
 # Load completions
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+compinit -C -d ~/.cache/zsh/zcompdump
 
 # KeyBindings
 bindkey -e
@@ -37,7 +45,6 @@ setopt sharehistory
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
-setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Opciones adicionales
@@ -52,9 +59,11 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Shell integrations
-eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
-eval "$(thefuck --alias)"
+
+# zsh fzf
+source /usr/share/fzf/key-bindings.zsh 2>/dev/null
+source /usr/share/fzf/completion.zsh 2>/dev/null
 
 export VISUAL=nvim
 export EDITOR=nvim
@@ -64,6 +73,11 @@ export ZSH_TMUX_FIX=1
 export hello=/usr/local/bin/t_royale
 
 ENABLE_CORRECTION="true"
+
+fuck() {
+  eval "$(thefuck --alias)"
+  fuck "$@"
+}
 
 # Run program on background
 noClose(){
@@ -131,7 +145,7 @@ alias code='codium'
 alias cat='bat --theme="Catppuccin Macchiato"'
 alias image='feh'
 alias grep='grep -i'
-alias date='date +'%d/%m/%Y''
+alias date="date +%d/%m/%Y"
 alias gs='git status --short'
 alias gparted='pkexec env DISPLAY=$DISPLAY WAYLAND_DISPLAY=$WAYLAND_DISPLAY XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR gparted'
 alias weather='curl wttr.in/valencia'
@@ -140,10 +154,13 @@ alias cal='cal -m'
 alias la='ls -a'
 alias open='xdg-open'
 # PATH
-export PATH="$HOME/.local/share/gem/ruby/3.3.0/bin:$PATH"
-export PATH="/usr/bin/teoscripts:$PATH"
-export PATH="$HOME/teo/teoscripts:$PATH"
-export PATH="$HOME/bin:$PATH"
+path=(
+  $HOME/.local/share/gem/ruby/3.3.0/bin
+  /usr/bin/teoscripts
+  $HOME/teo/teoscripts
+  $HOME/bin
+  $path
+)
 
 # Load local and secret variables
 if [ -f ~/.zshrc.local ]; then
@@ -152,20 +169,33 @@ fi
 
 # Init tmux and show neofetch if terminal is big enough
 
-if command -v tmux >/dev/null && [[ -z "$TMUX" ]]; then
-    tmux attach -t default 2>/dev/null || tmux new -s default
+if [[ -o interactive && -z "$TMUX" ]] && command -v tmux >/dev/null; then
+  session=$(
+    tmux list-sessions -F '#{session_name} #{session_attached} #{session_created}' 2>/dev/null \
+    | awk '$2 == 0 {print $3, $1}' \
+    | sort -n \
+    | tail -1 \
+    | awk '{print $2}'
+  )
+
+  if [[ -n "$session" ]]; then
+    tmux attach -t "$session"
+  else
+    tmux new
+  fi
 fi
 
-if [[ -o interactive ]]; then
-    columns=$(tput cols)
-    lines=$(tput lines)
-    MAX_LINES_NF=80
-    MAX_COLS_NF=35
+NEOFETCH_CACHE="$HOME/.cache/neofetch.ascii"
 
-    if [ "$columns" -ge "$MAX_LINES_NF" ] && [ "$lines" -ge "$MAX_COLS_NF" ]; then
-        neofetch --ascii ~/.config/neofetch/logo.txt
+if [[ -o interactive ]]; then
+  if (( COLUMNS >= 80 && LINES >= 35 )); then
+    if [[ -f $NEOFETCH_CACHE ]]; then
+      /usr/bin/cat "$NEOFETCH_CACHE"
     else
-        /usr/local/bin/t_royale
+      neofetch --ascii ~/.config/neofetch/logo.txt | tee "$NEOFETCH_CACHE"
     fi
+  else
+    /usr/local/bin/t_royale
+  fi
 fi
 
