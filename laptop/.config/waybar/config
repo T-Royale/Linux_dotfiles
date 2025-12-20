@@ -23,7 +23,7 @@
     ],
     "modules-right": [
         "wireplumber",
-        //"battery",
+        "battery",
         "disk",
         "memory",
         //"temperature",
@@ -31,7 +31,7 @@
     ],
 
     "clock": {
-        "format": "{:%A %d %B}",
+        "format": "{:%H:%M | %A %d %B}",
         "tooltip-format": "I use 󰣇  btw",
         "interval": 60
     },
@@ -91,7 +91,7 @@
     "hyprland/workspaces": {
         "show-special": true,
         "persistent-workspaces": {
-            "*":[1,2,3]
+            "*":[1,2,3,4,5]
         },
         "format": "{name}",
         "disable-scroll": true,
