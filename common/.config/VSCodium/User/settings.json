@@ -299,7 +299,7 @@
 		}
 	],
 	"workbench.activityBar.location": "bottom",
-	"window.customTitleBarVisibility": "auto",
+	"window.customTitleBarVisibility": "never",
 	"explorer.sortOrder": "foldersNestsFiles",
 	"errorLens.delay": 500,
 	"workbench.startupEditor": "none",
@@ -363,7 +363,6 @@
 	"catppuccin-noctis-icons.hidesExplorerArrows": false,
 	"workbench.productIconTheme": "material-product-icons",
 	"material-icon-theme.activeIconPack": "qwik",
-	"window.menuBarVisibility": "toggle",
 	"workbench.colorTheme": "Catppuccin Mocha",
 	"explorer.decorations.badges": false,
 	"editor.tokenColorCustomizations": {
@@ -387,4 +386,9 @@
 	"git.decorations.enabled": true,
 	"workbench.panel.defaultLocation": "right",
 	"workbench.editor.empty.hint": "hidden",
+	"editor.stickyScroll.enabled": false,
+	"window.customMenuBarAltFocus": false,
+	"window.enableMenuBarMnemonics": false,
+	"window.menuBarVisibility": "hidden",
+	"window.titleBarStyle": "native",
 }
