@@ -1,0 +1,398 @@
+{
+	"workbench.editor.enablePreview": false,
+	"workbench.editor.closeOnFileOpen": true,
+	"workbench.tips.enabled": false,
+	"editor.tabSize": 4,
+	"editor.lineNumbers": "relative",
+	"files.autoSave": "afterDelay",
+	"editor.fontSize": 22,
+	"editor.fontLigatures": true,
+	"editor.fontFamily": "JetBrainsMono Nerd Font",
+	"terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+	"terminal.integrated.fontSize": 20,
+	"terminal.integrated.localEchoStyle": "dim",
+	"editor.overtypeCursorStyle": "line",
+	"editor.cursorBlinking": "expand",
+	"editor.multiCursorMergeOverlapping": false,
+	"editor.cursorSmoothCaretAnimation": "on",
+	"explorer.confirmDragAndDrop": false,
+	"git.autofetch": true,
+	"extensions.experimental.affinity": {
+		"asvetliakov.vscode-neovim": 1
+	},
+	"periscope.peekBorderStyle": "double",
+	"vscode-pets.petSize": "medium",
+	"vscode-pets.theme": "forest",
+	"editor.autoClosingBrackets": "always",
+	"editor.autoClosingComments": "always",
+	"editor.autoClosingQuotes": "always",
+	"editor.guides.bracketPairs": true,
+	"editor.guides.bracketPairsHorizontal": true,
+	"editor.minimap.enabled": false,
+	"git.openRepositoryInParentFolders": "never",
+	"vim.easymotion": true,
+	"vim.useSystemClipboard": true,
+	"vim.cursorStylePerMode.insert": "line",
+	"vim.cursorStylePerMode.normal": "block",
+	"vim.cursorStylePerMode.replace": "block-outline",
+	"vim.cursorStylePerMode.visual": "underline",
+	"vim.cursorStylePerMode.visualblock": "line-thin",
+	"vim.cursorStylePerMode.visualline": "line",
+	"vim.leader": "<Space>",
+	"vim.normalModeKeyBindingsNonRecursive": [
+		{
+			"before": [
+				"<S-Tab>"
+			],
+			"commands": [
+				":bprevious"
+			]
+		},
+		{
+			"before": [
+				"<Tab>"
+			],
+			"commands": [
+				":bnext"
+			]
+		},
+		// splits
+		{
+			"before": [
+				"leader",
+				"v"
+			],
+			"commands": [
+				":vsplit"
+			]
+		},
+		{
+			"before": [
+				"leader",
+				"s"
+			],
+			"commands": [
+				":split"
+			]
+		},
+		// explorer
+		{
+			"before": [
+				"leader",
+				"f"
+			],
+			"commands": [
+				"workbench.view.explorer"
+			]
+		},
+		// terminal
+		{
+			"before": [
+				"leader",
+				"enter"
+			],
+			"commands": [
+				"workbench.action.terminal.toggleTerminal"
+			]
+		},
+		// panes
+		{
+			"before": [
+				"leader",
+				"h"
+			],
+			"commands": [
+				"workbench.action.focusLeftGroup"
+			]
+		},
+		{
+			"before": [
+				"leader",
+				"j"
+			],
+			"commands": [
+				"workbench.action.focusBelowGroup"
+			]
+		},
+		{
+			"before": [
+				"leader",
+				"k"
+			],
+			"commands": [
+				"workbench.action.focusAboveGroup"
+			]
+		},
+		{
+			"before": [
+				"leader",
+				"l"
+			],
+			"commands": [
+				"workbench.action.focusRightGroup"
+			]
+		},
+		// NICE TO HAVE
+		{
+			"before": [
+				"leader",
+				"w"
+			],
+			"commands": [
+				":w!"
+			]
+		},
+		{
+			"before": [
+				"leader",
+				"q"
+			],
+			"commands": [
+				":q!"
+			]
+		},
+		{
+			"before": [
+				"leader",
+				"x"
+			],
+			"commands": [
+				":x!"
+			]
+		},
+		{
+			"before": [
+				"[",
+				"d"
+			],
+			"commands": [
+				"editor.action.marker.prev"
+			]
+		},
+		{
+			"before": [
+				"]",
+				"d"
+			],
+			"commands": [
+				"editor.action.marker.next"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"c",
+				"a"
+			],
+			"commands": [
+				"editor.action.quickFix"
+			]
+		},
+		// { "before": ["leader", "f"], "commands": ["workbench.action.quickOpen"] },
+		{
+			"before": [
+				"leader",
+				"p"
+			],
+			"commands": [
+				"editor.action.formatDocument"
+			]
+		},
+		{
+			"before": [
+				"g",
+				"h"
+			],
+			"commands": [
+				"editor.action.showDefinitionPreviewHover"
+			]
+		}
+	],
+	"vim.visualModeKeyBindings": [
+		// Stay in visual mode while indenting
+		{
+			"before": [
+				"<"
+			],
+			"commands": [
+				"editor.action.outdentLines"
+			]
+		},
+		{
+			"before": [
+				">"
+			],
+			"commands": [
+				"editor.action.indentLines"
+			]
+		},
+		// Move selected lines while staying in visual mode
+		{
+			"before": [
+				"J"
+			],
+			"commands": [
+				"editor.action.moveLinesDownAction"
+			]
+		},
+		{
+			"before": [
+				"K"
+			],
+			"commands": [
+				"editor.action.moveLinesUpAction"
+			]
+		},
+		// toggle comment selection
+		{
+			"before": [
+				"leader",
+				"c"
+			],
+			"commands": [
+				"editor.action.commentLine"
+			]
+		}
+	],
+	"projectManager.sortList": "Recent",
+	"projectManager.git.baseFolders": [
+		"~/programacion/"
+	],
+	"platformio-ide.toolbar": [
+		{
+			"text": "$(home)",
+			"tooltip": "PlatformIO: Home",
+			"commands": "platformio-ide.showHome"
+		},
+		{
+			"text": "$(check)",
+			"tooltip": "PlatformIO: Build",
+			"commands": "platformio-ide.build"
+		},
+		{
+			"text": "$(arrow-right)",
+			"tooltip": "PlatformIO: Upload",
+			"commands": "platformio-ide.upload"
+		},
+		{
+			"text": "$(trashcan)",
+			"tooltip": "PlatformIO: Clean",
+			"commands": "platformio-ide.clean"
+		},
+		{
+			"text": "$(beaker)",
+			"tooltip": "PlatformIO: Test",
+			"commands": "platformio-ide.test"
+		},
+		{
+			"text": "$(plug)",
+			"tooltip": "PlatformIO: Serial Monitor",
+			"commands": "platformio-ide.serialMonitor"
+		},
+		{
+			"text": "$(terminal)",
+			"tooltip": "PlatformIO: New Terminal",
+			"commands": "platformio-ide.newTerminal"
+		},
+		{
+			"editor.tabSize": 4,
+		}
+	],
+	"workbench.activityBar.location": "bottom",
+	"window.customTitleBarVisibility": "never",
+	"explorer.sortOrder": "foldersNestsFiles",
+	"errorLens.delay": 500,
+	"workbench.startupEditor": "none",
+	"[yaml]": {
+		"editor.tabSize": 4
+	},
+	"[dockercompose]": {
+		"editor.tabSize": 4
+	},
+	"files.autoSaveDelay": 500,
+	"makefile.configureOnOpen": true,
+	"projectManager.tags": [
+		"Proyectos",
+		"Nube 7",
+		"GitHub",
+		"FP SMR",
+		"Arch Linux",
+		"Exercism",
+		"Pruebas",
+		"VSCodium",
+		"LowLevel",
+		"2ºSMR",
+		"FreeCodeCamp"
+	],
+	"errorLens.delayMode": "debounce",
+	"editor.codeLensFontFamily": "JetBrains Mono Nerd Font",
+	"editor.inlayHints.fontFamily": "JetBrains Mono Nerd Font",
+	"debug.console.fontFamily": "JetBrains Mono Nerd Font",
+	"C_Cpp.default.includePath": [
+		"${workspaceFolder}/**",
+		"/home/teo/.arduino15/packages/**",
+		"/home/teo/Arduino/libraries/**",
+		"/usr/include"
+	],
+	"C_Cpp.default.systemIncludePath": [
+		"${workspaceFolder}/**",
+		"/home/teo/.arduino15/packages/**",
+		"/home/teo/Arduino/libraries/**",
+		"/usr/include"
+	],
+	"workbench.editor.defaultBinaryEditor": "default",
+	"workbench.iconTheme": "material-icon-theme",
+	"workbench.tree.enableStickyScroll": false,
+	"workbench.tree.renderIndentGuides": "none",
+	"workbench.tree.indent": 12,
+	"explorer.compactFolders": false,
+	"material-icon-theme.hidesExplorerArrows": true,
+	"explorer.confirmDelete": false,
+	"files.associations": {
+		"*.ps1": "powershell"
+	},
+	// Discord RPC para VSCodium
+	"workbench.panel.showLabels": false,
+	"lldb.suppressUpdateNotifications": true,
+	"window.commandCenter": false,
+	"symbols.hidesExplorerArrows": true,
+	"symbols.folders.associations": {},
+	"workbench.sideBar.location": "right",
+	"editor.unicodeHighlight.invisibleCharacters": false,
+	"editor.unicodeHighlight.ambiguousCharacters": false,
+	"catppuccin-noctis-icons.hidesExplorerArrows": false,
+	"workbench.productIconTheme": "material-product-icons",
+	"material-icon-theme.activeIconPack": "qwik",
+	"workbench.colorTheme": "Catppuccin Mocha",
+	"explorer.decorations.badges": false,
+	"editor.tokenColorCustomizations": {
+		"textMateRules": [
+			{
+				"scope": "comment",
+				"settings": {
+					"fontStyle": "italic"
+				}
+			}
+		]
+	},
+	"vscode_custom_css.imports": [
+		"file:///home/teo/.config/VSCodium/customCSS/custom.css"
+	],
+	"[c]": {
+		"editor.defaultFormatter": "ms-vscode.cpptools"
+	},
+	"git.blame.editorDecoration.enabled": false,
+	"git.blame.statusBarItem.enabled": true,
+	"git.decorations.enabled": true,
+	"workbench.panel.defaultLocation": "right",
+	"workbench.editor.empty.hint": "hidden",
+	"editor.stickyScroll.enabled": false,
+	"window.customMenuBarAltFocus": false,
+	"window.enableMenuBarMnemonics": false,
+	"window.menuBarVisibility": "hidden",
+	"window.titleBarStyle": "native",
+	"workbench.editor.autoLockGroups": {
+		"workbench.editor.chatSession": false,
+		"workbench.editor.processExplorer": false
+	},
+}
