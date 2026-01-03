@@ -395,4 +395,5 @@
 		"workbench.editor.chatSession": false,
 		"workbench.editor.processExplorer": false
 	},
+	"terminal.integrated.defaultProfile.linux": "zsh",
 }
