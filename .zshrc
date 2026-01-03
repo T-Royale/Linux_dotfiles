@@ -148,16 +148,18 @@ alias date="date +%d/%m/%Y"
 alias gs='git status --short'
 alias gparted='pkexec env DISPLAY=$DISPLAY WAYLAND_DISPLAY=$WAYLAND_DISPLAY XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR gparted'
 alias weather='curl wttr.in/valencia'
-alias rm='/usr/local/bin/moveToTrash.sh'
+alias rm='/home/teo/.local/bin/moveToTrash.sh'
 alias cal='cal -m'
 alias la='ls -a'
 alias open='xdg-open'
 # PATH
 path=(
-  $HOME/.local/share/gem/ruby/3.3.0/bin
+  /home/.local/share/gem/ruby/3.3.0/bin
   /usr/bin/teoscripts
-  $HOME/teo/teoscripts
-  $HOME/bin
+  /home/teo/.local/bin
+  /home/teo/.local/bin/sound
+  /home/teo/.local/bin/bluetooth
+  /home/bin
   $path
 )
 
