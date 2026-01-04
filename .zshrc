@@ -160,7 +160,7 @@ path=(
   /home/teo/.local/bin/sound
   /home/teo/.local/bin/bluetooth
   /home/bin
-  /home/teo/.local/share/gem/ruby/3.4.0
+  /home/teo/.local/share/gem/ruby/3.4.0/bin
   $path
 )
 
