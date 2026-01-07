@@ -40,13 +40,13 @@ final_space = true
         type = "path"
         background = "p:gray-bg"
         foreground = "#d392ff"
-        template = '{{.UserName}} '
+        template = '{{.UserName}}'
 
     [[blocks.segments]]
         type = "path"
         background = "p:gray-bg"
         foreground = "blue"
-        template = '@ '
+        template = '@'
 
     [[blocks.segments]]
         type = "path"
