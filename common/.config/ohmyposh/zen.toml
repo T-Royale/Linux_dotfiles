@@ -33,16 +33,33 @@ final_space = true
         style = "diamond"
         background = "p:gray-bg"
         foreground = "blue"
-        template = '󰣇 {{ .UserName }} '
+        template = '󰣇 '
         leading_diamond = ""
+
+    [[blocks.segments]]
+        type = "path"
+        background = "p:gray-bg"
+        foreground = "#d392ff"
+        template = '{{.UserName}} '
+
+    [[blocks.segments]]
+        type = "path"
+        background = "p:gray-bg"
+        foreground = "blue"
+        template = '@ '
+
+    [[blocks.segments]]
+        type = "path"
+        background = "p:gray-bg"
+        foreground = "#d392ff"
+        template = '{{.HostName}} '
 
     [[blocks.segments]]
         type = "path"
         style = "diamond"
         background = "p:gray-bg"
         foreground = "green"
-        template = ' {{ .Path }}'
-
+        template = '{{.Path}}'
         trailing_diamond = ""
 
         [blocks.segments.properties]
@@ -54,10 +71,10 @@ final_space = true
         trailing_diamond = ""
         foreground = "p:orange"
         background = 'p:gray-bg'
-            template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+        template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
         [blocks.segments.properties]
             branch_icon = ' '
-            commit_icon = '@'
+            commit_icon = '#'
             fetch_status = true
 
 # Línea de comandos
