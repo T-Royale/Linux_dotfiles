@@ -28,7 +28,6 @@
 	"editor.autoClosingQuotes": "always",
 	"editor.guides.bracketPairs": true,
 	"editor.guides.bracketPairsHorizontal": true,
-	"editor.minimap.enabled": false,
 	"git.openRepositoryInParentFolders": "never",
 	"vim.easymotion": true,
 	"vim.useSystemClipboard": true,
@@ -396,4 +395,30 @@
 		"workbench.editor.processExplorer": false
 	},
 	"terminal.integrated.defaultProfile.linux": "zsh",
+	"editor.minimap.renderCharacters": false,
+	"editor.minimap.size": "fit",
+	"editor.minimap.enabled": false,
+	// --- clangd ---
+	"clangd.arguments": [
+		"--completion-style=detailed",
+		"--header-insertion=never",
+		"--function-arg-placeholders=false",
+		"--fallback-style=none"
+	],
+
+	// --- Autocompletado limpio ---
+	"editor.parameterHints.enabled": false,
+	"editor.inlayHints.enabled": "off",
+	"editor.hover.enabled": true,
+
+	// --- Sugerencias ---
+	"editor.quickSuggestions": {
+		"other": true,
+		"comments": false,
+		"strings": false
+	},
+
+	"editor.suggest.showWords": false,
+	"editor.suggest.showSnippets": false,
+	"editor.suggest.showStatusBar": false,
 }
