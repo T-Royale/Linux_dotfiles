@@ -1,22 +1,22 @@
 # Zinit initialization
 source ~/.zsh/zinit/zinit.zsh
 
-# ZSH_PLUGINS
+# === ZSH_PLUGINS ===
+# Syntax highlighting
 zinit ice wait lucid
 zinit light zsh-users/zsh-syntax-highlighting
 
+# Autosuggestions
 zinit ice wait lucid
 zinit light zsh-users/zsh-autosuggestions
 
-zinit ice wait lucid
+# Completions + compinit
+zinit ice wait lucid atinit="autoload -Uz compinit && compinit -C -d ~/.cache/zsh/zcompdump"
 zinit light zsh-users/zsh-completions
 
+# fzf-tab
 zinit ice wait'1' lucid
 zinit light Aloxaf/fzf-tab
-
-# Load completions
-autoload -Uz compinit
-compinit -C -d ~/.cache/zsh/zcompdump
 
 # KeyBindings
 bindkey -e
