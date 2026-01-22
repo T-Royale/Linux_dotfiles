@@ -170,22 +170,23 @@ if [ -f ~/.zshrc.local ]; then
 fi
 
 # Init tmux and show neofetch if terminal is big enough
+tm() {
+    if [[ -o interactive && -z "$TMUX" ]] && command -v tmux >/dev/null; then
+      session=$(
+        tmux list-sessions -F '#{session_name} #{session_attached} #{session_created}' 2>/dev/null \
+        | awk '$2 == 0 {print $3, $1}' \
+        | sort -n \
+        | tail -1 \
+        | awk '{print $2}'
+      )
 
-if [[ -o interactive && -z "$TMUX" ]] && command -v tmux >/dev/null; then
-  session=$(
-    tmux list-sessions -F '#{session_name} #{session_attached} #{session_created}' 2>/dev/null \
-    | awk '$2 == 0 {print $3, $1}' \
-    | sort -n \
-    | tail -1 \
-    | awk '{print $2}'
-  )
-
-  if [[ -n "$session" ]]; then
-    tmux attach -t "$session"
-  else
-    tmux new
-  fi
-fi
+      if [[ -n "$session" ]]; then
+        tmux attach -t "$session"
+      else
+        tmux new
+      fi
+    fi
+}
 
 NEOFETCH_CACHE="$HOME/.cache/neofetch.ascii"
 
