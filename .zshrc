@@ -152,6 +152,7 @@ alias rm='/home/teo/.local/bin/moveToTrash.sh'
 alias cal='cal -m'
 alias la='ls -a'
 alias open='xdg-open'
+alias esp-conf='source ~/esp-idf/export.sh'
 # PATH
 path=(
   /home/.local/share/gem/ruby/3.3.0/bin
@@ -162,6 +163,7 @@ path=(
   /home/bin
   /home/teo/.local/share/gem/ruby/3.4.0/bin
   /var/lib/snapd/snap/bin
+  /home/teo/.platformio/penv/bin
   $path
 )
 
