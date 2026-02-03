@@ -54,7 +54,7 @@
     "wireplumber": {
         "format": "{icon}{volume}%",
         "format-muted": "󰝟 OFF",
-        "on-click": "/usr/local/bin/sound/toggleMute",
+        "on-click": " ~/.local/bin/sound/toggleMute.sh",
         "format-icons": [" ", " ", " ", "  ", "  "]
     },
 
