@@ -123,7 +123,7 @@ function y() {
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 # Aliases
-alias mount_ntfs='sudo mount -t exfat -o uid=$(id -u),gid=$(id -g),umask=022'
+alias mount_exfat='sudo mount -t exfat -o uid=$(id -u),gid=$(id -g),umask=022'
 alias df='df -ah'
 alias fm='yazi'
 alias lgit='lazygit'
@@ -155,16 +155,15 @@ alias open='xdg-open'
 alias esp-conf='source ~/esp-idf/export.sh'
 # PATH
 path=(
-  /home/.local/share/gem/ruby/3.3.0/bin
-  /usr/bin/teoscripts
-  /home/teo/.local/bin
-  /home/teo/.local/bin/sound
-  /home/teo/.local/bin/bluetooth
-  /home/bin
-  /home/teo/.local/share/gem/ruby/3.4.0/bin
-  /var/lib/snapd/snap/bin
-  /home/teo/.platformio/penv/bin
-  $path
+    /usr/bin
+    /home/teo/.local/share/gem/ruby/3.3.0/bin
+    /home/teo/.local/share/gem/ruby/3.4.0/bin
+    /home/teo/.local/bin
+    /home/bin
+    /usr/bin/teoscripts
+    /var/lib/snapd/snap/bin
+    /home/teo/.platformio/penv/bin
+    $path
 )
 
 # Load local and secret variables
@@ -204,4 +203,3 @@ if [[ -o interactive ]]; then
         cowsay -f tux hola
   fi
 fi
-
