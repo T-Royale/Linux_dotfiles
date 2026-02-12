@@ -378,7 +378,7 @@
 		"file:///home/teo/.config/VSCodium/customCSS/custom.css"
 	],
 	"[c]": {
-		"editor.defaultFormatter": "ms-vscode.cpptools"
+		"editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
 	},
 	"git.blame.editorDecoration.enabled": false,
 	"git.blame.statusBarItem.enabled": true,
@@ -409,7 +409,7 @@
 	// --- Autocompletado limpio ---
 	"editor.parameterHints.enabled": false,
 	"editor.inlayHints.enabled": "off",
-	"editor.hover.enabled": true,
+	"editor.hover.enabled": "on",
 
 	// --- Sugerencias ---
 	"editor.quickSuggestions": {
@@ -421,4 +421,9 @@
 	"editor.suggest.showWords": false,
 	"editor.suggest.showSnippets": false,
 	"editor.suggest.showStatusBar": false,
+	"terminal.integrated.suggest.quickSuggestions": true,
+	"terminal.integrated.suggest.suggestOnTriggerCharacters": true,
+	"terminal.integrated.suggest.cdPath": "off",
+	"terminal.integrated.suggest.enabled": false,
+	"terminal.integrated.suggest.inlineSuggestion": "off",
 }
